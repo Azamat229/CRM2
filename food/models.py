@@ -1,7 +1,7 @@
 from django.db import models
 import datetime
-from django.contrib.auth.models import User
-
+# from django.contrib.auth.models import User
+from authentication.models import User
 
 class Table(models.Model):
     name = models.CharField(max_length=20)
@@ -95,7 +95,7 @@ class Meal(models.Model):
 
 
 class Order(models.Model):
-    waiterid = models.ForeignKey(Userr, on_delete=models.CASCADE)
+    waiterid = models.ForeignKey(User, on_delete=models.CASCADE)
     tableid = models.ForeignKey(Table, on_delete=models.CASCADE)
     isitopen = models.BooleanField(default=True)
     date = models.DateTimeField(auto_now_add=True)
