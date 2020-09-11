@@ -131,7 +131,7 @@ class StatusDetailSerializer(serializers.ModelSerializer):
 class ServicePercentageListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServicePercentage
-        fields = ['percentage']
+        fields = '__all__'
 
 
 class ServicePercentageDetailSerializer(serializers.ModelSerializer):
@@ -145,13 +145,8 @@ class ServicePercentageDetailSerializer(serializers.ModelSerializer):
 
 class MealsToOrderSerializer(serializers.ModelSerializer):
     class Meta:
-<<<<<<< HEAD
         model = MealsToOrder
         fields = ['id', 'count_meal', 'mealsid', 'total']
-=======
-        model = CountOfMeal
-        fields = ['id', 'amount', 'name_meal']
->>>>>>> 143fa8e4e217f0d7d478b33f1fcc8b4d00316a0d
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -217,46 +212,15 @@ class CheckSerializer(serializers.ModelSerializer):
     orderid = OrderSerializer2(read_only=True)
     orders_id = serializers.PrimaryKeyRelatedField(queryset=Order.objects.all(), source='orderid.id')
 
-<<<<<<< HEAD
     class Meta:
         model = Check
         fields = ['id', 'orders_id', 'date', 'servicefree', 'orderid', ]
 
 
 """Create Check"""
-=======
-class AmountMealSerializer(serializers.ModelSerializer):
-    total = serializers.IntegerField(read_only=True)
-    price = serializers.IntegerField(read_only=True, source='name_meal.price')
 
-    class Meta:
-        model = CountOfMeal
-        fields = ['id', 'name_meal', 'price', 'amount', 'total', ]
-
-
-class CheckCreateSerializer(serializers.ModelSerializer):
-    # servicefee = serializers.IntegerField( source='servicefee.percentage')
-    mealsid = AmountMealSerializer(read_only=True)
-    class Meta:
-        model = Check
-        fields = ['orderid', 'mealsid']
-        # fields = '__all__'
-
-
-"""List Check"""
-
-
->>>>>>> 143fa8e4e217f0d7d478b33f1fcc8b4d00316a0d
-
-class CheckListSerializer(serializers.ModelSerializer):
-    servicefee = serializers.IntegerField(read_only=True, source='servicefee.percentage')
-    mealsid = AmountMealSerializer(read_only=True)
 
 class CheckSerializer2(serializers.ModelSerializer):
     class Meta:
         model = Check
-<<<<<<< HEAD
         fields = ['id', 'date', 'servicefree', 'orderid']
-=======
-        fields = ['id', 'orderid', 'date', 'servicefee', 'mealsid']
->>>>>>> 143fa8e4e217f0d7d478b33f1fcc8b4d00316a0d

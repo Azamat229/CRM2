@@ -67,7 +67,7 @@ class Status(models.Model):
 
 
 class ServicePercentage(models.Model):
-    percentage = models.IntegerField(default=33)
+    percentage = models.IntegerField()
 
     def __str__(self):
         return str(self.percentage)
@@ -83,7 +83,6 @@ class Meal(models.Model):
         return self.name
 
 
-<<<<<<< HEAD
 #
 # class MealMealsByCategory(models.Model):
 #     name = models.CharField(max_length=50)
@@ -95,8 +94,6 @@ class Meal(models.Model):
 #         return self.name
 
 
-=======
->>>>>>> 143fa8e4e217f0d7d478b33f1fcc8b4d00316a0d
 class Order(models.Model):
     waiterid = models.ForeignKey(Userr, on_delete=models.CASCADE)
     tableid = models.ForeignKey(Table, on_delete=models.CASCADE)
@@ -114,7 +111,6 @@ class Order(models.Model):
         return '{}, {}'.format(self.waiterid, self.tableid)
 
 
-<<<<<<< HEAD
 class MealsToOrder(models.Model):
     orderid = models.ForeignKey(Order, related_name='meals_id', on_delete=models.CASCADE)
     count_meal = models.PositiveIntegerField()
@@ -134,30 +130,3 @@ class Check(models.Model):
 
     def __str__(self):
         return 'Check id {}, {}'.format(self.id, self.orderid)
-=======
-class CountOfMeal(models.Model):
-    order = models.ForeignKey(Order, related_name='count', on_delete=models.CASCADE)
-    name_meal = models.ForeignKey(Meal, on_delete=models.CASCADE, blank=True, null=True)
-    amount = models.PositiveIntegerField()
-
-    @property
-    def total(self):
-        return self.amount * self.name_meal.price
-
-    def __str__(self):
-        return self.total
-
-
-"""Create Check"""
-
-
-class Check(models.Model):
-    orderid = models.ForeignKey(Order, related_name='counts', on_delete=models.CASCADE)
-    date = models.DateTimeField(auto_now_add=True)
-    servicefree = models.IntegerField(default=20)
-    totalsum = models.IntegerField(blank=True, null=True)  # thinking about this
-    mealsid = models.ForeignKey(CountOfMeal, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.orderid
->>>>>>> 143fa8e4e217f0d7d478b33f1fcc8b4d00316a0d

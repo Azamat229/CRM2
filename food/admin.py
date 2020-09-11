@@ -14,6 +14,5 @@ admin.site.register(ServicePercentage)
 admin.site.register(Meal)
 admin.site.register(Order)
 admin.site.register(MealsToOrder)
-admin.site.unregister(User)
 admin.site.register(Check)
 

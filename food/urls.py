@@ -43,7 +43,7 @@ urlpatterns = [
 
 
 
-    path('count/', views.CountOfMealViewList.as_view()),
+    # path('count/', views.CountOfMealViewList.as_view()),
 
 
 

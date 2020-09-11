@@ -1,0 +1,21 @@
+{
+	"id": "3c062975-4242-4bf7-aa5b-aac5c14afa35",
+	"name": "Conduit",
+	"values": [
+		{
+			"key": "APIURL",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "text",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "text",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-09-11T05:00:55.071Z",
+	"_postman_exported_using": "Postman/7.31.1"
+}

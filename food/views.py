@@ -3,7 +3,7 @@ from .models import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework import mixins
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
@@ -188,6 +188,7 @@ class MealsToOrderList(generics.ListCreateAPIView):
 class OrderList(generics.ListCreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class CheckList(generics.ListCreateAPIView):
@@ -226,6 +227,7 @@ class MethodSerializerView(object):
 
 
 class CheckListCreateView(MethodSerializerView, generics.ListCreateAPIView):
+
     '''
     API: /users
     Method: GET/POST
@@ -245,17 +247,6 @@ class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Order.objects.all()
 
 
-<<<<<<< HEAD
 class ActiveOrder(generics.ListAPIView):
     serializer_class = OrderSerializer
     queryset = Order.objects.filter(isitopen=True)
-=======
-class CheckListView(generics.ListAPIView):
-    queryset = Check.objects.all()
-    serializer_class = CheckListSerializer
-
-
-class CountOfMealViewList(generics.ListAPIView):
-    queryset = CountOfMeal.objects.all()
-    serializer_class = AmountMealSerializer
->>>>>>> 143fa8e4e217f0d7d478b33f1fcc8b4d00316a0d
